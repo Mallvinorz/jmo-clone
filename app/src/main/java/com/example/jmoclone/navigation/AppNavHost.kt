@@ -1,6 +1,8 @@
 package com.example.jmoclone.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -11,20 +13,12 @@ import com.example.jmoclone.ui.auth.RegisterScreen
 
 @Composable
 fun AppNavHost(viewModel: AuthViewModel) {
-    val navController = rememberNavController()
+    val currentUser by viewModel.authState.collectAsState()
+//    val isLoggedIn = viewModel.currentUser != null
 
-    NavHost(
-        navController = navController,
-        startDestination = ScreenNavigation.Login.route
-    ){
-        composable(ScreenNavigation.Login.route){
-            LoginScreen(viewModel, navController)
-        }
-        composable(ScreenNavigation.Register.route) {
-            RegisterScreen(viewModel, navController)
-        }
-        composable(ScreenNavigation.Main.route){
-            MainScreen()
-        }
+    if (currentUser != null) {
+        MainScreen()
+    } else {
+        AuthNavGraph(viewModel)
     }
 }

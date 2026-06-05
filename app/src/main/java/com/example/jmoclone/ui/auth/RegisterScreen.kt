@@ -33,7 +33,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.jmoclone.R
@@ -69,7 +68,7 @@ fun RegisterScreen(viewModel: AuthViewModel?, navController: NavController) {
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Image(
-                    painter = painterResource(R.drawable.mock_square_logo),
+                    painter = painterResource(R.drawable.material_news),
                     contentDescription = "JMO Mock Logo",
                     modifier = Modifier.size(48.dp)
                 )

@@ -27,7 +27,6 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -52,7 +51,7 @@ import com.example.jmoclone.navigation.ScreenNavigation
 import com.example.jmoclone.ui.theme.JMOCloneTheme
 
 @Composable
-fun LoginScreen(viewModel: AuthViewModel?, navController: NavController) {
+fun LoginScreen(viewModel: AuthViewModel? = hiltViewModel(), navController: NavController) {
     val context = LocalContext.current
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -79,7 +78,7 @@ fun LoginScreen(viewModel: AuthViewModel?, navController: NavController) {
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Image(
-                    painter = painterResource(R.drawable.mock_square_logo),
+                    painter = painterResource(R.drawable.material_news),
                     contentDescription = "JMO Mock Logo",
                     modifier = Modifier.size(48.dp)
                 )
