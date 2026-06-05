@@ -31,6 +31,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -58,8 +59,8 @@ fun RegisterScreen(viewModel: AuthViewModel?, navController: NavController) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(WindowInsets.safeContent.asPaddingValues())
-                .padding(horizontal = 16.dp),
+                .padding(WindowInsets.safeContent.asPaddingValues()),
+//                .padding(horizontal = 16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Spacer(modifier = Modifier.size(48.dp))
@@ -68,7 +69,7 @@ fun RegisterScreen(viewModel: AuthViewModel?, navController: NavController) {
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Image(
-                    painter = painterResource(R.drawable.material_news),
+                    painter = painterResource(R.drawable.mock_square_logo),
                     contentDescription = "JMO Mock Logo",
                     modifier = Modifier.size(48.dp)
                 )
@@ -76,8 +77,8 @@ fun RegisterScreen(viewModel: AuthViewModel?, navController: NavController) {
             }
             Spacer(Modifier.size(48.dp))
             Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                Text("Signup")
-                Text("Silakan registrasi untuk masuk aplikasi")
+                Text("Signup", fontWeight = FontWeight.Bold)
+                Text("Silakan registrasi untuk masuk aplikasi", style = MaterialTheme.typography.bodySmall)
                 InputField(label = "Nama Anda", value = name, onValueChange = { name = it})
                 InputField(label = "Email Anda", value = email, onValueChange = { email = it })
                 InputField(

@@ -36,6 +36,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -68,8 +69,8 @@ fun LoginScreen(viewModel: AuthViewModel? = hiltViewModel(), navController: NavC
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(WindowInsets.safeContent.asPaddingValues())
-                .padding(horizontal = 16.dp),
+                .padding(WindowInsets.safeContent.asPaddingValues()),
+//                .padding(horizontal = 16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Spacer(modifier = Modifier.size(48.dp))
@@ -78,7 +79,7 @@ fun LoginScreen(viewModel: AuthViewModel? = hiltViewModel(), navController: NavC
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Image(
-                    painter = painterResource(R.drawable.material_news),
+                    painter = painterResource(R.drawable.mock_square_logo),
                     contentDescription = "JMO Mock Logo",
                     modifier = Modifier.size(48.dp)
                 )
@@ -86,8 +87,11 @@ fun LoginScreen(viewModel: AuthViewModel? = hiltViewModel(), navController: NavC
             }
             Spacer(Modifier.size(48.dp))
             Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                Text("Login")
-                Text("Silakan login untuk masuk aplikasi")
+                Text("Login", fontWeight = FontWeight.Bold)
+                Text(
+                    "Silakan login untuk masuk aplikasi",
+                    style = MaterialTheme.typography.bodySmall
+                )
                 InputField(label = "Email Anda", value = email, onValueChange = { email = it })
                 InputField(
                     label = "Kata Sandi",
@@ -113,8 +117,8 @@ fun LoginScreen(viewModel: AuthViewModel? = hiltViewModel(), navController: NavC
                 Text("Login")
             }
             TextButton(onClick = {
-                navController.navigate(ScreenNavigation.Register.route){
-                    popUpTo (ScreenNavigation.Register.route) {inclusive = true }
+                navController.navigate(ScreenNavigation.Register.route) {
+                    popUpTo(ScreenNavigation.Register.route) { inclusive = true }
                 }
             }) {
                 Text("Buat Akun", color = MaterialTheme.colorScheme.primary)
@@ -123,7 +127,9 @@ fun LoginScreen(viewModel: AuthViewModel? = hiltViewModel(), navController: NavC
             authResource?.value?.let {
                 when (it) {
                     is Resource.Failure -> {
-                        Toast.makeText(context, it.exception.message, Toast.LENGTH_SHORT).show()
+                        LaunchedEffect(Unit) {
+                            Toast.makeText(context, it.exception.message, Toast.LENGTH_SHORT).show()
+                        }
                     }
 
                     is Resource.Success -> {
@@ -142,6 +148,7 @@ fun LoginScreen(viewModel: AuthViewModel? = hiltViewModel(), navController: NavC
         }
     }
 }
+
 
 
 @Composable
@@ -200,6 +207,6 @@ fun InputField(
 @Composable
 private fun LoginScreenPreview() {
     JMOCloneTheme() {
-        LoginScreen( null,rememberNavController())
+        LoginScreen(null, rememberNavController())
     }
 }

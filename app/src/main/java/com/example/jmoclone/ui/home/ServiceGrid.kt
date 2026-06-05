@@ -46,7 +46,7 @@ fun ServiceGrid(modifier: Modifier = Modifier) {
     )
 
     LazyVerticalGrid(
-        columns = GridCells.Fixed(4),
+        columns = GridCells.Fixed(3),
         modifier = modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
@@ -71,7 +71,7 @@ fun ServiceGridItem(service: ServiceMenu, onItemClick: () -> Unit) {
         )
     ) {
         Column(
-            modifier = Modifier.padding(4.dp),
+            modifier = Modifier.padding(4.dp).padding(top = 12.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Icon(
