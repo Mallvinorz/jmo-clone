@@ -5,8 +5,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
 import javax.inject.Inject
+import javax.inject.Singleton
 
-
+@Singleton
 class AuthRepositoryImpl @Inject constructor(private val firebaseAuth: FirebaseAuth) : AuthRepository {
     override val currentUser: FirebaseUser?
         get() = firebaseAuth.currentUser

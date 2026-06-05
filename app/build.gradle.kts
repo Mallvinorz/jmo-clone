@@ -49,6 +49,8 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.runtime.compose)
     testImplementation(libs.junit)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
@@ -62,8 +64,9 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     //add dagger hilt
     implementation("com.google.dagger:hilt-android:2.59.2")
-    ksp("com.google.dagger:hilt-android-compiler:2.57.1")
+    ksp("com.google.dagger:hilt-android-compiler:2.59.2")
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
     //navigation
-    val nav_version = "2.9.8"
-    implementation("androidx.navigation:navigation-compose:$nav_version")
+    val navVersion = "2.9.0"
+    implementation("androidx.navigation:navigation-compose:$navVersion")
 }

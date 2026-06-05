@@ -7,6 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.jmoclone.ui.MainScreen
 import com.example.jmoclone.ui.auth.AuthViewModel
 import com.example.jmoclone.ui.auth.LoginScreen
+import com.example.jmoclone.ui.auth.RegisterScreen
 
 @Composable
 fun AppNavHost(viewModel: AuthViewModel) {
@@ -18,6 +19,9 @@ fun AppNavHost(viewModel: AuthViewModel) {
     ){
         composable(ScreenNavigation.Login.route){
             LoginScreen(viewModel, navController)
+        }
+        composable(ScreenNavigation.Register.route) {
+            RegisterScreen(viewModel, navController)
         }
         composable(ScreenNavigation.Main.route){
             MainScreen()

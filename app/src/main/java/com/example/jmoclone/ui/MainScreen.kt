@@ -12,6 +12,8 @@ import androidx.navigation.compose.rememberNavController
 import com.example.jmoclone.navigation.ScreenNavigation
 import com.example.jmoclone.ui.components.BottomBar
 import com.example.jmoclone.ui.home.HomeScreen
+import com.example.jmoclone.ui.news.NewsScreen
+import com.example.jmoclone.ui.profile.ProfileScreen
 import com.example.jmoclone.ui.theme.JMOCloneTheme
 
 @Composable
@@ -27,6 +29,12 @@ fun MainScreen(
         ) {
             composable(ScreenNavigation.Home.route) {
                 HomeScreen()
+            }
+            composable(ScreenNavigation.News.route) {
+                NewsScreen()
+            }
+            composable(ScreenNavigation.Profile.route){
+                ProfileScreen()
             }
         }
     }
